@@ -8,6 +8,9 @@
         "48": "icon.png",
         "128": "icon.png"
     },
+    "background": {
+        "service_worker": "background.js"
+    },
     "action": {
         "default_popup": "index.html",
         "default_icon": {
@@ -16,5 +19,23 @@
             "128": "icon.png"
         }
     },
-    "permissions": []
+    "permissions": [
+        "contextMenus",
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ]
+        }
+    ]
 }
