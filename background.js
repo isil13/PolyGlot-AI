@@ -28,12 +28,19 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             await chrome.tabs.sendMessage(tab.id, { action: "showLoading" });
         } catch (e) {
             console.error("Content script error:", e);
-            // Inject script if missing
-            chrome.scripting.executeScript({
-                target: { tabId: tab.id },
-                files: ['content.js']
-            });
-            // Retry message after injection might be needed but for simplicity just logging
+            // Inject script and styles if missing
+            try {
+                await chrome.scripting.insertCSS({
+                    target: { tabId: tab.id },
+                    files: ['content.css']
+                });
+                await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    files: ['content.js']
+                });
+            } catch (injectionError) {
+                console.error("Injection error:", injectionError);
+            }
         }
 
         try {
