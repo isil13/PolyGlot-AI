@@ -23,8 +23,29 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS (Local) -->
-    <link rel="stylesheet" href="output.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                        primary: '#6366f1', // Indigo 500
+                        primaryHover: '#818cf8', // Indigo 400
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
@@ -344,19 +365,13 @@ console.log('Hello World');" spellcheck="false"></textarea>
 
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Tarayıcında Her Yerde Kullan</h2>
                 <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Web'de gezinirken kod parçacıklarını anında çevirmek
-                    için Chrome eklentimizi keşfedin. Çok yakında mağazada.</p>
+                    için Chrome eklentimizi keşfedin.</p>
 
-                <div class="flex flex-col items-center gap-3">
-                    <button
-                        class="px-8 py-4 bg-white text-indigo-900 font-bold rounded-xl shadow-lg shadow-indigo-500/20 hover:scale-105 hover:shadow-white/20 transition-all duration-300 flex items-center gap-3 cursor-not-allowed opacity-80"
-                        title="Çok Yakında">
-                        <i class="fa-brands fa-chrome text-xl"></i>
-                        <span>Chrome'a Ekle</span>
-                    </button>
-                    <span
-                        class="text-xs text-indigo-300 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">Yakında
-                        Chrome Web Store'da</span>
-                </div>
+                <a href="https://chrome.google.com/webstore" target="_blank"
+                    class="inline-flex items-center gap-3 px-8 py-4 text-white font-bold rounded-xl transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 hover:scale-105 hover:shadow-[0_0_20px_rgba(147,51,234,0.5)]">
+                    <i class="fa-brands fa-chrome text-xl"></i>
+                    <span>Hemen Ücretsiz İndir</span>
+                </a>
             </div>
         </section>
 
