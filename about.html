@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - Polyglot</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                        primary: '#6366f1', // Indigo 500
+                        primaryHover: '#818cf8', // Indigo 400
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body
+    class="bg-[#0f172a] text-white min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+    <!-- Background Decoration -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 bg-[#0f172a]">
+        <canvas id="codeRainCanvas" class="absolute top-0 left-0 w-full h-full opacity-[0.15]"></canvas>
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-32 left-20 w-[40%] h-[40%] bg-pink-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full py-4 px-4 sm:px-8 border-b border-white/5 backdrop-blur-md bg-[#0f172a]/80 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <!-- Left: Logo -->
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer select-none">
+                <div
+                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-all duration-300">
+                    <i class="fa-solid fa-code text-white text-sm"></i>
+                </div>
+                <h1
+                    class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                    Polyglot</h1>
+            </a>
+
+            <!-- Right: Home Button -->
+            <a href="index.html"
+                class="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-300 text-sm font-medium">
+                <i class="fa-solid fa-house text-xs"></i>
+                <span>Ana Sayfaya Dön</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-20 max-w-3xl flex flex-col items-center justify-center">
+
+        <div
+            class="w-full bg-glass border border-glassBorder rounded-3xl p-10 md:p-14 backdrop-blur-3xl shadow-2xl relative overflow-hidden animate-fadeInUp">
+            <!-- Decorative Icon -->
+            <div class="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                <i class="fa-solid fa-users-viewfinder text-9xl text-white"></i>
+            </div>
+
+            <h1
+                class="text-3xl md:text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 inline-block">
+                Hakkımızda</h1>
+
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
+                <p>
+                    Polyglot, geliştiricilerin dil bariyerlerini aşması için <strong class="text-white">Işıl
+                        Altınok</strong> tarafından geliştirilmiş açık kaynaklı bir projedir.
+                </p>
+                <p>
+                    Modern yazılım geliştirme dünyasında, farklı diller arasında geçiş yapmak bazen zorlayıcı olabilir.
+                    Polyglot, yapay zeka gücüyle bu süreci anlık ve hatasız hale getirmeyi hedefler.
+                </p>
+
+                <div class="mt-8 pt-8 border-t border-white/10 flex items-center gap-4">
+                    <div class="text-sm text-gray-400">Geliştirici ile iletişime geçin:</div>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=altinokisil13@gmail.com" target="_blank"
+                        class="text-indigo-400 hover:text-white transition-colors font-medium">altinokisil13@gmail.com</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-8 border-t border-glassBorder bg-glass/20 backdrop-blur-md">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-gray-400 text-sm">
+                &copy; 2024 Polyglot AI. Tüm hakları saklıdır.
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://www.linkedin.com/in/isil-altinok" target="_blank"
+                    class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/isil13" target="_blank"
+                    class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-all">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
