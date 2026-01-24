@@ -1,3 +1,13 @@
+/* Popup Fixed Dimensions */
+html,
+body {
+    width: 400px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 /* Global Vars & Reset */
 :root {
     --bg-dark: #0f172a;
@@ -30,10 +40,10 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-heading);
-    min-height: 100vh;
+    /* min-height: 100vh; Removed to respect fixed height rule above */
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    /* overflow-x: hidden; Already set in top rule */
     line-height: 1.5;
 }
 

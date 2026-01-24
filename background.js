@@ -23,28 +23,35 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         const targetLang = info.menuItemId.replace("lang-", "");
         const sourceCode = info.selectionText;
 
-        // Send "Loading" state to content script
+        // 1. Önce içerik betiğini (script) ve stili (CSS) enjekte et (Inject on-the-fly)
+        // Bu, manifest.json'da content_scripts olmadığından gereklidir.
+        try {
+            await chrome.scripting.insertCSS({
+                target: { tabId: tab.id },
+                files: ['content.css']
+            });
+            await chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                files: ['content.js']
+            });
+        } catch (injectionError) {
+            console.warn("Script injection failed or already present:", injectionError);
+            // Hata olsa bile devam edelim, belki script zaten oradadır.
+        }
+
+        // 2. Yükleniyor durumunu gönder
         try {
             await chrome.tabs.sendMessage(tab.id, { action: "showLoading" });
         } catch (e) {
-            console.error("Content script error:", e);
-            // Inject script and styles if missing
-            try {
-                await chrome.scripting.insertCSS({
-                    target: { tabId: tab.id },
-                    files: ['content.css']
-                });
-                await chrome.scripting.executeScript({
-                    target: { tabId: tab.id },
-                    files: ['content.js']
-                });
-            } catch (injectionError) {
-                console.error("Injection error:", injectionError);
-            }
+            console.error("Content script connection error:", e);
+            return; // Eğer iletişim kuramazsak devam etmenin anlamı yok
         }
 
+        // 3. Kodu çevir
         try {
             const translatedCode = await translateCode(sourceCode, targetLang);
+
+            // 4. Sonucu gönder
             chrome.tabs.sendMessage(tab.id, {
                 action: "showResult",
                 data: translatedCode,
