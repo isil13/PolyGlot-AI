@@ -1,4 +1,12 @@
-const GROQ_API_KEY = "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";
+// background.js dosyasının EN BAŞI
+try {
+    importScripts('config.js');
+} catch (e) {
+    console.log("Config dosyası bulunamadı (GitHub sürümü olabilir).");
+}
+
+// Anahtarı config'den çek, eğer yoksa uyarı ver
+const GROQ_API_KEY = (typeof CONFIG !== 'undefined') ? CONFIG.GROQ_API_KEY : "LUTFEN_API_KEY_GIRINIZ";
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
