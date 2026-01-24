@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Polyglot - AI Code Translator",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Yapay zeka destekli anlık kod çeviri aracı.",
     "icons": {
         "16": "icon.png",
