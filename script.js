@@ -1,5 +1,10 @@
-// API Configuration
-const GROQ_API_KEY = "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";
+// Eğer CONFIG tanımlıysa oradan al, yoksa boş kalsın
+const GROQ_API_KEY = (typeof CONFIG !== 'undefined') ? CONFIG.GROQ_API_KEY : "";
+
+if (!GROQ_API_KEY) {
+    console.error("API Key bulunamadı!");
+    // İstersen burada alert("Lütfen API Key girin") diyebilirsin.
+}
 
 // DOM Elements
 const sourceCodeInput = document.getElementById('sourceCode');
@@ -43,8 +48,8 @@ async function handleTranslation() {
         return;
     }
 
-    if (!GROQ_API_KEY || GROQ_API_KEY === "BURAYA_KEY_GELECEK") {
-        alert("Lütfen script.js dosyasındaki GROQ_API_KEY değişkenine geçerli bir API anahtarı giriniz.");
+    if (!GROQ_API_KEY || GROQ_API_KEY === "BURAYA_KEY_GELECEK" || GROQ_API_KEY === "BURAYA_KENDI_GROQ_KEYINIZI_YAZIN") {
+        alert("Lütfen config.js dosyasındaki GROQ_API_KEY bölümüne geçerli bir API anahtarı giriniz.");
         return;
     }
 
@@ -56,7 +61,11 @@ async function handleTranslation() {
         targetCodeInput.value = translatedCode;
     } catch (error) {
         console.error("Translation Error:", error);
-        targetCodeInput.value = "// Bir hata oluştu. Lütfen konsolu kontrol edin veya daha sonra tekrar deneyin.\n// Hata: " + error.message;
+        let errorMsg = error.message;
+        if (error.message === "Failed to fetch") {
+            errorMsg = "Ağ hatası: İnternet bağlantınızı kontrol edin veya tarayıcınızın API isteğini engellemediğinden emin olun (CORS).";
+        }
+        targetCodeInput.value = "// Bir hata oluştu. Lütfen konsolu kontrol edin veya daha sonra tekrar deneyin.\n// Hata: " + errorMsg;
     } finally {
         setLoading(false);
     }
