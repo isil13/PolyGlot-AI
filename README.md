@@ -15,23 +15,18 @@ Polyglot, geliştiricilerin ve öğrencilerin kod parçacıklarını saniyeler i
 * **🛡️ Gizlilik Odaklı:** Verileriniz sunucularda saklanmaz.
 * **🎨 Modern Arayüz:** Göz yormayan şık tasarım.
 
-## 🛠️ Kurulum (Manuel Yükleme)
 
-Bu eklenti henüz Chrome Web Mağazası'nda yayınlanmadığı için "Geliştirici Modu" ile ücretsiz kurabilirsiniz.
+## 🚀 Kurulum ve Kullanım
 
-### Adım 1: Dosyaları İndirin
-1.  Bu sayfanın sağ üstündeki yeşil **<> Code** butonuna tıklayın.
-2.  **Download ZIP** seçeneğini seçin.
-3.  İndirdiğiniz ZIP dosyasını klasöre çıkartın.
+Bu proje, yüksek hız ve doğruluk için **Groq API** kullanmaktadır. Güvenlik nedeniyle API anahtarı kaynak kodda paylaşılmamıştır. Projeyi çalıştırmak için aşağıdaki basit adımları izleyin:
 
-### Adım 2: Chrome'a Yükleyin
-1.  Google Chrome tarayıcısını açın.
-2.  Adres çubuğuna şunu yazıp Enter'a basın: `chrome://extensions/`
-3.  Sağ üst köşedeki **Geliştirici modu (Developer mode)** anahtarını **AÇIK** hale getirin.
-4.  Sol üstte beliren **Paketlenmemiş öğe yükle (Load unpacked)** butonuna tıklayın.
-5.  Az önce ZIP'ten çıkardığınız klasörü seçin.
-
-🎉 **Tebrikler!** Polyglot tarayıcınıza eklendi.
+1. **Groq API Key Alın:** [Groq Cloud Console](https://console.groq.com/keys) adresine gidin ve ücretsiz bir API anahtarı oluşturun.
+2. **Yapılandırma Dosyasını Hazırlayın:** Projenin ana dizininde bulunan [config.example.js](cci:7://file:///c:/Users/altin/OneDrive/Desktop/SaaS%20Fabrika/config.example.js:0:0-0:0) dosyasının adını [config.js](cci:7://file:///c:/Users/altin/OneDrive/Desktop/SaaS%20Fabrika/config.js:0:0-0:0) olarak değiştirin.
+3. **Anahtarınızı Tanımlayın:** [config.js](cci:7://file:///c:/Users/altin/OneDrive/Desktop/SaaS%20Fabrika/config.js:0:0-0:0) dosyasını bir metin düzenleyici ile açın ve anahtarınızı ilgili alana yapıştırın:
+   ```javascript
+   const CONFIG = {
+       GROQ_API_KEY: "BURAYA_KENDI_API_ANAHTARINIZI_YAZIN"
+   };
 
 ## ⚙️ Yapılandırma (Önemli!)
 
